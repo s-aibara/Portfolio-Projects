@@ -79,7 +79,7 @@ WHERE year IN(
 	GROUP BY year
 	ORDER BY total_games_sold DESC; 
 	
---6. Platform Performance according to critics.
+--6. Platform Performance according to critics (platforms they loved and their sales). 
 SELECT g.platform, SUM(g.total_shipped) as total_sales, ROUND(AVG(r.critic_score),2) as avg_critic_score
 FROM game_sales as g
 INNER JOIN game_reviews as r
@@ -88,7 +88,7 @@ WHERE g.year IN ('1998', '2002', '2008')
 GROUP BY platform
 ORDER BY avg_critic_score DESC NULLS LAST
 
---7. Game Performance according to critics.
+--7. Game Performance according to critics (games they loved and their sales). 
 SELECT g.name, SUM(g.total_shipped) as total_sales, ROUND(AVG(r.critic_score),2) as avg_critic_score
 FROM game_sales as g
 INNER JOIN game_reviews as r
